@@ -1,0 +1,20 @@
+{% extends "store/base.html" %}
+{% block content %}
+<h3>Товары</h3>
+<table class="table table-striped">
+  <thead><tr>
+    <th>Наименование</th><th>Категория</th><th>Цена</th><th>Остаток</th><th></th>
+  </tr></thead>
+  <tbody>
+  {% for p in products %}
+    <tr>
+      <td>{{ p.name }}</td>
+      <td>{{ p.category }}</td>
+      <td>{{ p.price }}</td>
+      <td>{{ p.stock }}</td>
+      <td><a href="{% url 'product_price' p.id %}" class="btn btn-sm btn-warning">Изменить цену</a></td>
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

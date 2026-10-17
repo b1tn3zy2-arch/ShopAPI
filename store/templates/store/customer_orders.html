@@ -1,0 +1,17 @@
+{% extends "store/base.html" %}
+{% block content %}
+<h3>Заказы клиента #{{ customer_id }}</h3>
+<table class="table">
+  <thead><tr><th>Дата</th><th>Сумма</th><th>Средний чек</th><th></th></tr></thead>
+  <tbody>
+  {% for o in orders %}
+    <tr>
+      <td>{{ o.created_at }}</td>
+      <td>{{ o.total }}</td>
+      <td>{{ o.avg_check }}</td>
+      <td><a href="{% url 'order_detail' o.order_id %}">детали</a></td>
+    </tr>
+  {% empty %}<tr><td colspan="4">Заказов нет</td></tr>{% endfor %}
+  </tbody>
+</table>
+{% endblock %}

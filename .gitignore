@@ -1,0 +1,23 @@
+# Секреты и локальная конфигурация
+.env
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+
+# Логи и временные файлы
+logs/*.log
+*.log
+
+# Django
+db.sqlite3
+staticfiles/
+media/
+
+# IDE
+.idea/
+.vscode/
+*.swp

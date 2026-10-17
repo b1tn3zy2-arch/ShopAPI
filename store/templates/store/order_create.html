@@ -1,0 +1,24 @@
+{% extends "store/base.html" %}
+{% block content %}
+{% if step == 'item' %}
+  <h3>Добавить позицию в заказ #{{ order_id }}</h3>
+  <form method="post" action="{% url 'order_add_item' order_id %}">{% csrf_token %}
+    <div class="mb-2"><label>Товар</label>
+      <select name="product_id" class="form-control">
+        {% for p in products %}<option value="{{ p.id }}">{{ p.name }} (ост. {{ p.stock }})</option>{% endfor %}
+      </select></div>
+    <div class="mb-2"><label>Количество</label>
+      <input name="quantity" type="number" class="form-control" required></div>
+    <button class="btn btn-primary">Добавить</button>
+  </form>
+{% else %}
+  <h3>Создать заказ</h3>
+  <form method="post">{% csrf_token %}
+    <div class="mb-2"><label>Клиент</label>
+      <select name="customer_id" class="form-control">
+        {% for c in customers %}<option value="{{ c.id }}">{{ c.fio }}</option>{% endfor %}
+      </select></div>
+    <button class="btn btn-primary">Создать заказ</button>
+  </form>
+{% endif %}
+{% endblock %}
